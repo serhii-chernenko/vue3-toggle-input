@@ -19,4 +19,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
   base: mode === 'production' ? '/vue3-toggle-input/' : '/'
-});
+}));
