@@ -2,10 +2,23 @@
 defineOptions({
   inheritAttrs: false,
 });
+
+const [isChecked, modifiers] = defineModel<boolean | number>({
+  set(value) {
+    if (!modifiers.binary) {
+      return value;
+    }
+
+    return value ? 1 : 0;
+  },
+  get(value: boolean | number): boolean {
+    return !!value;
+  },
+});
 </script>
 <template>
   <label class="switch">
-    <input type="checkbox" checked v-bind="$attrs" />
+    <input v-model="isChecked" type="checkbox" v-bind="$attrs" />
     <span class="slider round"></span>
   </label>
 </template>
